@@ -1,10 +1,10 @@
 <div class="container-fluid">
-  <div class="row">
+  <header class="row">
     <h3 class="col">Spacex Launch programs</h3>
-  </div>
+  </header>
   <div class="row">
-    <div class="col-12 col-md-2">
-      <div class="filter-panel bg-white">
+    <div class="col-12 col-md-3 pr-md-0 col-lg-2 mb-3">
+      <div class="filter-panel bg-white pb-3">
         <h5 class="px-3 pt-2">Filters</h5>
         <div class="container">
           <div class="row mx-0 mb-2" role="radiogroup">
@@ -13,7 +13,8 @@
             </div>
             <ng-container *ngFor="let year of years; let i=index">
               <div class="col-6 p-0">
-                <button class="btn" [ngClass]="{'float-right': i%2!==0}" role="radio" [attr.aria-checked]="year.selected" (click)="selectYear(year)">{{year.label}}</button>
+                <button class="btn" [ngClass]="{'float-right': i%2!==0}" role="radio"
+                  [attr.aria-checked]="year.selected" (click)="selectYear(year)">{{year.label}}</button>
               </div>
             </ng-container>
           </div>
@@ -23,10 +24,12 @@
               <label class="col">Successful Launch</label>
             </div>
             <div class="col-6 p-0">
-              <button class="btn" role="radio" [attr.aria-checked]="successfulLaunch === true" (click)="selectLaunch(true)">True</button>
+              <button class="btn" role="radio" [attr.aria-checked]="successfulLaunch === true"
+                (click)="selectLaunch(true)">True</button>
             </div>
             <div class="col-6 p-0">
-              <button class="btn float-right" role="radio" [attr.aria-checked]="successfulLaunch === false" (click)="selectLaunch(false)">False</button>
+              <button class="btn float-right" role="radio" [attr.aria-checked]="successfulLaunch === false"
+                (click)="selectLaunch(false)">False</button>
             </div>
           </div>
 
@@ -35,20 +38,24 @@
               <label class="col">Successful Landing</label>
             </div>
             <div class="col-6 p-0">
-              <button class="btn" role="radio" [attr.aria-checked]="successfulLanding === true" (click)="selectLanding(true)">True</button>
+              <button class="btn" role="radio" [attr.aria-checked]="successfulLanding === true"
+                (click)="selectLanding(true)">True</button>
             </div>
             <div class="col-6 p-0">
-              <button class="btn float-right" role="radio" [attr.aria-checked]="successfulLanding === false" (click)="selectLanding(false)">False</button>
+              <button class="btn float-right" role="radio" [attr.aria-checked]="successfulLanding === false"
+                (click)="selectLanding(false)">False</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-12 col-md-10">
+    <div class="col-12 col-md-9 col-lg-10">
       <div class="row">
-        <div class="card-deck m-0 mb-3 col-md-3" *ngFor="let mission of missionList">
+        <div class="card-deck pr-0 m-0 mb-3 col-12 col-md-6 col-lg-3" *ngFor="let mission of missionList">
           <div class="card m-0 shadow-sm p-3">
-            <img class="background-grey" [src]="mission?.links?.mission_patch_small" [alt]="mission.misson_name">
+            <div class="image-container">
+              <img class="background-grey" [src]="mission?.links?.mission_patch_small" [alt]="mission.misson_name">
+            </div>
             <div class="card-body px-0">
               <h5 class="blue-text">{{mission.mission_name}} #{{mission.flight_number}}</h5>
               <label class="font-weight-bold">Mission Ids:</label>
@@ -56,15 +63,22 @@
                 <li *ngFor="let id of mission.mission_id">{{id}}</li>
               </ul>
               <label class="font-weight-bold">Launch Year:</label>
-              <span class="blue-text">{{mission.launch_year}}</span>
+              <span class="blue-text ml-2">{{mission.launch_year}}</span>
               <label class="font-weight-bold">Successful Launch:</label>
-              <span class="blue-text">{{mission.launch_success}}</span>
+              <span class="blue-text ml-2">{{mission.launch_success}}</span>
               <label class="font-weight-bold">Successful Landing:</label>
-              <span class="blue-text">{{mission.landing}}</span>
+              <span class="blue-text ml-2">{{mission.landing}}</span>
             </div>
           </div>
+        </div>
+        <div class="col" *ngIf="missionList.length<1">
+          No Mission matching current filter. Try changing filters :)
         </div>
       </div>
     </div>
   </div>
+  <footer class="pt-4 pb-2 footer text-center">
+    <h5 class="d-inline">Developed by: &nbsp;</h5>
+    <span>{{developerName}}</span>
+  </footer>
 </div>
