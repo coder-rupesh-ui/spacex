@@ -14,11 +14,15 @@ export class AppComponent implements OnInit {
   successfulLaunch: boolean;
   successfulLanding: boolean;
   missionList: any[] = [];
+  param:any = {};
+  developerName = 'Rupeshkumar Yadav';
 
   constructor(private appService: AppService) {}
 
   ngOnInit() {
-    this.getProgramList(null);
+    this.appService.filter$.subscribe((data) => {
+      this.getProgramList(this.param);
+    });
     for(let i=this.startYear;i<=this.endYear;i++) {
       this.years.push({
         label: i,
@@ -39,7 +43,8 @@ export class AppComponent implements OnInit {
   selectYear(year) {
     this.clearYearSelection();
     year.selected = true;
-    this.getProgramList({ })
+    this.param.launch_year = year.label;
+    this.appService.setParams(this.param);
   }
 
   clearYearSelection() {
@@ -50,9 +55,13 @@ export class AppComponent implements OnInit {
 
   selectLaunch(flag) {
     this.successfulLaunch = flag;
+    this.param.launch_success = flag;
+    this.appService.setParams(this.param);
   }
 
   selectLanding(flag) {
     this.successfulLanding = flag;
+    this.param.land_success = flag;
+    this.appService.setParams(this.param);
   }
 }
