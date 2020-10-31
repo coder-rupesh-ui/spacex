@@ -46,48 +46,25 @@
     </div>
     <div class="col-12 col-md-10">
       <div class="row">
-        <div class="col-md-3">
-          <div class="card shadow-sm">
-            <img src="temp" alt="thumbnail">
-            <div class="card-body">
-              Body goes here
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card mb-4 shadow-sm">
-            <img src="temp" alt="thumbnail">
-            <div class="card-body">
-              Body goes here
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card mb-4 shadow-sm">
-            <img src="temp" alt="thumbnail">
-            <div class="card-body">
-              Body goes here
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card mb-4 shadow-sm">
-            <img src="temp" alt="thumbnail">
-            <div class="card-body">
-              Body goes here
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card mb-4 shadow-sm">
-            <img src="temp" alt="thumbnail">
-            <div class="card-body">
-              Body goes here
+        <div class="card-deck m-0 mb-3 col-md-3" *ngFor="let mission of missionList">
+          <div class="card m-0 shadow-sm p-3">
+            <img class="background-grey" [src]="mission?.links?.mission_patch_small" [alt]="mission.misson_name">
+            <div class="card-body px-0">
+              <h5 class="blue-text">{{mission.mission_name}} #{{mission.flight_number}}</h5>
+              <label class="font-weight-bold">Mission Ids:</label>
+              <ul class="blue-text">
+                <li *ngFor="let id of mission.mission_id">{{id}}</li>
+              </ul>
+              <label class="font-weight-bold">Launch Year:</label>
+              <span class="blue-text">{{mission.launch_year}}</span>
+              <label class="font-weight-bold">Successful Launch:</label>
+              <span class="blue-text">{{mission.launch_success}}</span>
+              <label class="font-weight-bold">Successful Landing:</label>
+              <span class="blue-text">{{mission.landing}}</span>
             </div>
           </div>
         </div>
       </div>
-      Right section goes here
     </div>
   </div>
 </div>
