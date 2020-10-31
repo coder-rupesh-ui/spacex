@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +13,12 @@ export class AppComponent implements OnInit {
   years = [];
   successfulLaunch: boolean;
   successfulLanding: boolean;
+  missionList: any[] = [];
+
+  constructor(private appService: AppService) {}
 
   ngOnInit() {
+    this.getProgramList(null);
     for(let i=this.startYear;i<=this.endYear;i++) {
       this.years.push({
         label: i,
@@ -22,9 +27,19 @@ export class AppComponent implements OnInit {
     }
   }
 
+  getProgramList(param) {
+    this.appService.getData(param).subscribe((data:any[]) => {
+      console.log(data);
+      this.missionList = data;
+    }, error => {
+      console.log(error);
+    })
+  }
+
   selectYear(year) {
     this.clearYearSelection();
     year.selected = true;
+    this.getProgramList({ })
   }
 
   clearYearSelection() {
