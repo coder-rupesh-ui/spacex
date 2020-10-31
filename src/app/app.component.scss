@@ -1,0 +1,17 @@
+.filter-panel {
+    label {
+        border-bottom: 1px solid grey;
+    }
+    button[role=radio] {
+        // text-align: center;
+        background-color: #beec8b;
+        margin-bottom: 5px;
+        // border-radius: 5px;
+        cursor: pointer;
+        padding: .375rem 1.5rem;
+        min-width: 90px;
+    }
+    button[role=radio][aria-checked=true] {
+        background-color: #80bd3c;
+    }
+}
