@@ -8,36 +8,36 @@ import { AppService } from './app.service';
 })
 export class AppComponent implements OnInit {
   title = 'spacex';
-  startYear=2001;
-  endYear=2020;
+  startYear = 2001;
+  endYear = 2020;
   years = [];
   successfulLaunch: boolean;
   successfulLanding: boolean;
   missionList: any[] = [];
-  param:any = {};
+  param: any = {};
   developerName = 'Rupeshkumar Yadav';
 
-  constructor(private appService: AppService) {}
+  constructor(private appService: AppService) { }
 
   ngOnInit() {
     this.appService.filter$.subscribe((data) => {
       this.getProgramList(this.param);
     });
-    for(let i=this.startYear;i<=this.endYear;i++) {
+    for (let i = this.startYear; i <= this.endYear; i++) {
       this.years.push({
         label: i,
         selected: false
-      });  
+      });
     }
   }
 
   getProgramList(param) {
-    this.appService.getData(param).subscribe((data:any[]) => {
+    this.appService.getData(param).subscribe((data: any[]) => {
       console.log(data);
       this.missionList = data;
     }, error => {
       console.log(error);
-    })
+    });
   }
 
   selectYear(year) {
@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
   clearYearSelection() {
     this.years.forEach((year) => {
       year.selected = false;
-    })
+    });
   }
 
   selectLaunch(flag) {
