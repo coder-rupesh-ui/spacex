@@ -22,20 +22,24 @@ export class AppComponent implements OnInit {
   constructor(private appService: AppService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe((queryParams) => {
-      if (queryParams.launch_year) {
-        this.param.launch_year = queryParams.launch_year;
+    this.router.events.subscribe(e => {
+      if(e instanceof NavigationEnd) {
+        console.log(this.route.snapshot.queryParams);
+        const queryParams = this.route.snapshot.queryParams;
+        if (queryParams.launch_year) {
+          this.param.launch_year = queryParams.launch_year;
+        }
+        if (queryParams.launch_success) {
+          this.param.launch_success = queryParams.launch_success;
+          this.successfulLaunch = queryParams.launch_success;
+        }
+        if (queryParams.land_success) {
+          this.param.land_success = queryParams.land_success;
+          this.successfulLanding = queryParams.land_success;
+        }
+        this.init();
       }
-      if (queryParams.launch_success) {
-        this.param.launch_success = queryParams.launch_success;
-        this.successfulLaunch = queryParams.launch_success;
-      }
-      if (queryParams.land_success) {
-        this.param.land_success = queryParams.land_success;
-        this.successfulLanding = queryParams.land_success;
-      }
-      this.init();
-    })
+    });
   }
 
   init() {
