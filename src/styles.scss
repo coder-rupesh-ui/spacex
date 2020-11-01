@@ -1,4 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+$grid-breakpoints: (
+  xs: 0,
+  sm: 699px,
+  md: 700px,
+  lg: 1024px,
+  xl: 1440px
+);
+
+$container-max-widths: (
+  sm: 699px,
+  md: 700px,
+  lg: 1024px,
+  xl: 1440px
+);
+
+@import "bootstrap";
+
 html,body {
     height: 100%;
 }
