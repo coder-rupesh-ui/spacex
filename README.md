@@ -2,7 +2,8 @@
 Angular 9 with Bootstrap 4 for layouting.
 Server side rendering used via Angular universal.
 Static code analysis done by ng lint.
-Build automated with heroku and deployed on url: `https://coder-rupesh-spacex.herokuapp.com/`
+Build automated with heroku and deployed on url: [demo](https://coder-rupesh-spacex.herokuapp.com/) or `https://coder-rupesh-spacex.herokuapp.com/`
+screenshot of the lighthouse report is upload in base repo with name: `lighthouse-screenshot.png`
 
 # Spacex
 
