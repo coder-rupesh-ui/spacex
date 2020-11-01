@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "~9.1.7",
     "@angular/platform-server": "~9.1.7",
     "@angular/router": "~9.1.7",
+    "@angular/service-worker": "~9.1.7",
     "@nguniversal/express-engine": "^9.1.1",
     "@trademe/ng-defer-load": "^8.2.1",
     "express": "^4.15.2",
