@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from './app.service';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,29 +12,48 @@ export class AppComponent implements OnInit {
   startYear = 2001;
   endYear = 2020;
   years = [];
-  successfulLaunch: boolean;
-  successfulLanding: boolean;
+  successfulLaunch: string;
+  successfulLanding: string;
   missionList: any[] = [];
   param: any = {};
   developerName = 'Rupeshkumar Yadav';
 
-  constructor(private appService: AppService) { }
+
+  constructor(private appService: AppService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.appService.filter$.subscribe((data) => {
+    this.route.queryParams.subscribe((queryParams) => {
+      if (queryParams.launch_year) {
+        this.param.launch_year = queryParams.launch_year;
+      }
+      if (queryParams.launch_success) {
+        this.param.launch_success = queryParams.launch_success;
+        this.successfulLaunch = queryParams.launch_success;
+      }
+      if (queryParams.land_success) {
+        this.param.land_success = queryParams.land_success;
+        this.successfulLanding = queryParams.land_success;
+      }
+      this.init();
+    })
+  }
+
+  init() {
+    /* this.appService.filter$.subscribe((data) => {
       this.getProgramList(this.param);
-    });
+    }); */
+    this.getProgramList(this.param);
+    this.years = [];
     for (let i = this.startYear; i <= this.endYear; i++) {
       this.years.push({
         label: i,
-        selected: false
+        selected: i == this.param.launch_year
       });
     }
   }
 
   getProgramList(param) {
     this.appService.getData(param).subscribe((data: any[]) => {
-      console.log(data);
       this.missionList = data;
     }, error => {
       console.log(error);
@@ -44,7 +64,10 @@ export class AppComponent implements OnInit {
     this.clearYearSelection();
     year.selected = true;
     this.param.launch_year = year.label;
-    this.appService.setParams(this.param);
+    // this.appService.setParams(this.param);
+    this.router.navigate(['/'], {
+      queryParams: this.param
+    });
   }
 
   clearYearSelection() {
@@ -56,12 +79,18 @@ export class AppComponent implements OnInit {
   selectLaunch(flag) {
     this.successfulLaunch = flag;
     this.param.launch_success = flag;
-    this.appService.setParams(this.param);
+    // this.appService.setParams(this.param);
+    this.router.navigate(['/'], {
+      queryParams: this.param
+    });
   }
 
   selectLanding(flag) {
     this.successfulLanding = flag;
     this.param.land_success = flag;
-    this.appService.setParams(this.param);
+    // this.appService.setParams(this.param);
+    this.router.navigate(['/'], {
+      queryParams: this.param
+    });
   }
 }

@@ -24,12 +24,12 @@
               <label class="col">Successful Launch</label>
             </div>
             <div class="col-6 p-0">
-              <button class="btn" role="radio" [attr.aria-checked]="successfulLaunch === true"
-                (click)="selectLaunch(true)">True</button>
+              <button class="btn" role="radio" [attr.aria-checked]="successfulLaunch === 'true'"
+                (click)="selectLaunch('true')">True</button>
             </div>
             <div class="col-6 p-0">
-              <button class="btn float-right" role="radio" [attr.aria-checked]="successfulLaunch === false"
-                (click)="selectLaunch(false)">False</button>
+              <button class="btn float-right" role="radio" [attr.aria-checked]="successfulLaunch === 'false'"
+                (click)="selectLaunch('false')">False</button>
             </div>
           </div>
 
@@ -38,12 +38,12 @@
               <label class="col">Successful Landing</label>
             </div>
             <div class="col-6 p-0">
-              <button class="btn" role="radio" [attr.aria-checked]="successfulLanding === true"
-                (click)="selectLanding(true)">True</button>
+              <button class="btn" role="radio" [attr.aria-checked]="successfulLanding === 'true'"
+                (click)="selectLanding('true')">True</button>
             </div>
             <div class="col-6 p-0">
-              <button class="btn float-right" role="radio" [attr.aria-checked]="successfulLanding === false"
-                (click)="selectLanding(false)">False</button>
+              <button class="btn float-right" role="radio" [attr.aria-checked]="successfulLanding === 'false'"
+                (click)="selectLanding('false')">False</button>
             </div>
           </div>
         </div>
