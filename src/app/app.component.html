@@ -2,7 +2,7 @@
   <header class="row">
     <h3 class="col">Spacex Launch programs</h3>
   </header>
-  <div class="row">
+  <div class="row pr-md-3">
     <div class="col-12 col-md-3 pr-md-0 col-lg-2 mb-3">
       <div class="filter-panel bg-white pb-3">
         <h5 class="px-3 pt-2">Filters</h5>
@@ -51,7 +51,7 @@
     </div>
     <div class="col-12 col-md-9 col-lg-10">
       <div class="row">
-        <div class="card-deck pr-0 m-0 mb-3 col-12 col-md-6 col-lg-3" *ngFor="let mission of missionList">
+        <div class="card-deck pr-md-0 m-0 mb-3 col-12 col-md-6 col-lg-3" *ngFor="let mission of missionList">
           <div class="card m-0 shadow-sm p-3">
             <div class="image-container">
               <img class="background-grey" [src]="mission?.links?.mission_patch_small" [alt]="mission.misson_name">
@@ -62,12 +62,18 @@
               <ul class="blue-text">
                 <li *ngFor="let id of mission.mission_id">{{id}}</li>
               </ul>
-              <label class="font-weight-bold">Launch Year:</label>
-              <span class="blue-text ml-2">{{mission.launch_year}}</span>
-              <label class="font-weight-bold">Successful Launch:</label>
-              <span class="blue-text ml-2">{{mission.launch_success}}</span>
-              <label class="font-weight-bold">Successful Landing:</label>
-              <span class="blue-text ml-2">{{mission.landing}}</span>
+              <div class="wrapper">
+                <label class="font-weight-bold">Launch Year:</label>
+                <span class="blue-text ml-2">{{mission.launch_year}}</span>
+              </div>
+              <div class="wrapper">
+                <label class="font-weight-bold">Successful Launch:</label>
+                <span class="blue-text ml-2">{{mission.launch_success}}</span>
+              </div>
+              <div class="wrapper">
+                <label class="font-weight-bold">Successful Landing:</label>
+                <span class="blue-text ml-2">{{mission.landing}}</span>
+              </div>
             </div>
           </div>
         </div>
