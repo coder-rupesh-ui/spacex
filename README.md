@@ -1,7 +1,7 @@
 # Technology Stack used
 Angular 9 with Bootstrap 4 for layouting.
 Server side rendering used via Angular universal.
-Static code analysis done by ng lint
+Static code analysis done by ng lint.
 Build automated with heroku and deployed on url: `https://coder-rupesh-spacex.herokuapp.com/`
 
 # Spacex
