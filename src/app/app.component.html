@@ -3,7 +3,7 @@
     <h3 class="col">Spacex Launch programs</h3>
   </header>
   <div class="row pr-md-3">
-    <div class="col-12 col-md-4 pr-md-0 col-lg-2 mb-3">
+    <div class="col-12 col-md-3 pr-md-0 col-lg-2 mb-3">
       <div class="filter-panel bg-white pb-3">
         <h5 class="px-3 pt-2">Filters</h5>
         <div class="container">
@@ -49,12 +49,12 @@
         </div>
       </div>
     </div>
-    <div class="col-12 col-md-8 col-lg-10">
+    <div class="col-12 col-md-9 col-lg-10">
       <div class="row">
-        <div class="card-deck pr-md-0 m-0 mb-3 col-12 col-md-6 col-lg-3" *ngFor="let mission of missionList">
+        <div class="card-deck pr-md-0 m-0 mb-3 col-12 col-md-6 col-lg-3" *ngFor="let mission of missionList" (deferLoad)="mission.showImage = true">
           <div class="card m-0 shadow-sm p-3">
-            <div class="image-container">
-              <img class="background-grey" [src]="mission?.links?.mission_patch_small" [alt]="mission.misson_name">
+            <div class="image-container" *ngIf="mission.showImage">
+              <img class="background-grey" [src]="mission?.links?.mission_patch_small" [alt]="mission.misson_name" height="100%" width="100%">
             </div>
             <div class="card-body px-0">
               <h5 class="blue-text">{{mission.mission_name}} #{{mission.flight_number}}</h5>
